@@ -14,7 +14,19 @@ variable "my_ip" {
   type        = string
 
   validation {
-    condition = can(regex("^\\d{1,3}(\\.\\d{1,3}){3}$", var.my_ip))
+    condition     = can(regex("^\\d{1,3}(\\.\\d{1,3}){3}$", var.my_ip))
     error_message = "my_ip must be an IPv4 address. USE: curl -4 ifconfig.me"
   }
+}
+
+variable "admin_username" {
+  description = "Local admin on both VMs. Becomes the first domain admin on DC01."
+  type        = string
+  default     = "rpatel-admin"
+}
+
+variable "admin_password" {
+  description = "Local admin password. 12+ chars, upper, lower, number, symbol"
+  type        = string
+  sensitive   = true
 }
