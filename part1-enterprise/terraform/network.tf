@@ -17,6 +17,7 @@ resource "azurerm_virtual_network" "nbf" {
   location            = azurerm_resource_group.workbase.location
   resource_group_name = azurerm_resource_group.workbase.name
   address_space       = ["10.10.0.0/16"]
+  dns_servers         = ["10.10.1.4"] //NBF-DC01 is the DNS server for the whole network
   tags                = local.tags
 }
 
